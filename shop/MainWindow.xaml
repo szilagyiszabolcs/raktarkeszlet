@@ -1,0 +1,78 @@
+﻿<Window x:Class="shop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:shop"
+        mc:Ignorable="d"
+        Title="Raktárkészlet nyilvántartás" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Terméklista">
+                <Grid>
+                    <Button Name="import" Content="Importálás" HorizontalAlignment="Left" Margin="190,10,0,0" VerticalAlignment="Top" Width="75" Click="Import_Click"/>
+                    <Button Name="export" Content="Exportálás" HorizontalAlignment="Left" Margin="290,10,0,0" VerticalAlignment="Top" Width="75" Click="Export_Click"/>
+                    <Button Name="add" Content="Hozzáadás" HorizontalAlignment="Left" Margin="390,10,0,0" VerticalAlignment="Top" Width="75" Click="Add_Click"/>
+                    <Button Name="modify" Content="Módosítás" HorizontalAlignment="Left" Margin="490,10,0,0" VerticalAlignment="Top" Width="75" Click="Modify_Click"/>
+
+                    <DataGrid Name="tablazat" Margin="0,50,0,0" ColumnWidth="*" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" SelectionMode="Single" IsReadOnly="True"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Bevételezés">
+                <Grid>
+                    <Label Content="Vonalkód" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="bVonalkod" HorizontalAlignment="Left" Height="23" Margin="96,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" TextChanged="BVonalkod_TextChanged"/>
+
+                    <Label Content="Megnevezés" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="bNev" HorizontalAlignment="Left" Height="23" Margin="96,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+
+                    <Label Content="Egységár" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="bAr" HorizontalAlignment="Left" Height="23" Margin="96,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+
+                    <Label Content="Mennyiség" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="bMennyiseg" HorizontalAlignment="Left" Height="23" Margin="96,106,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="200"/>
+
+                    <Button Name="bHozzaadas" Content="Hozzáadás" HorizontalAlignment="Left" Margin="11,147,0,0" VerticalAlignment="Top" Width="75" Click="BHozzaadas_Click"/>
+
+                    <Button Name="ujBevetelezes" Content="Új bevételezés" HorizontalAlignment="Left" Margin="497,10,0,0" VerticalAlignment="Top" Width="86" Click="UjBevetelezes_Click"/>
+
+                    <DataGrid Name="bevetelezettTermekTablazat" HorizontalAlignment="Left" Height="191" Margin="301,80,0,0" VerticalAlignment="Top" Width="475" ColumnWidth="*" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" IsReadOnly="True"/>
+
+                    <Button Name="mentes" Content="Mentés" HorizontalAlignment="Left" Margin="443,276,0,0" VerticalAlignment="Top" Width="75" Click="Mentes_Click"/>
+                    <Button Name="btorles" Content="Törlés" HorizontalAlignment="Left" Margin="568,276,0,0" VerticalAlignment="Top" Width="75" Click="Btorles_Click"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Értékesítés">
+                <Grid>
+                    <Label Content="Vonalkód" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="eVonalkod" HorizontalAlignment="Left" Height="23" Margin="96,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" TextChanged="eVonalkod_TextChanged"/>
+
+                    <Label Content="Megnevezés" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="eNev" HorizontalAlignment="Left" Height="23" Margin="96,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+
+                    <Label Content="Egységár" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="eAr" HorizontalAlignment="Left" Height="23" Margin="96,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+
+                    <Label Content="Mennyiség" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="eMennyiseg" HorizontalAlignment="Left" Height="23" Margin="96,106,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="200"/>
+
+                    <Button Name="eHozzaadas" Content="Hozzáadás" HorizontalAlignment="Left" Margin="11,147,0,0" VerticalAlignment="Top" Width="75" Click="Hozzaadas_Click"/>
+
+
+                    <Button Name="ujVevo" Content="Új vevő" HorizontalAlignment="Left" Margin="497,10,0,0" VerticalAlignment="Top" Width="75" Click="UjVevo_Click"/>
+
+                    <Label Content="Végösszeg:" HorizontalAlignment="Left" Margin="443,49,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="vegosszeg" HorizontalAlignment="Left" Height="23" Margin="523,52,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+
+                    <DataGrid Name="vasaroltTermekTablazat" HorizontalAlignment="Left" Height="191" Margin="301,80,0,0" VerticalAlignment="Top" Width="475" ColumnWidth="*" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" IsReadOnly="True"/>
+
+                    <Button Name="fizetes" Content="Fizetés" HorizontalAlignment="Left" Margin="443,276,0,0" VerticalAlignment="Top" Width="75" Click="Fizetes_Click"/>
+                    <Button Name="torles" Content="Törlés" HorizontalAlignment="Left" Margin="568,276,0,0" VerticalAlignment="Top" Width="75" Click="Torles_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
